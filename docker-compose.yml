@@ -1,0 +1,20 @@
+# To run this interactively and remove the running image:
+#   $ docker-compose run --rm fuchsia
+#
+# Add -w `pwd` to log in at the current pwd.
+#   $ docker-compose run --rm -w `pwd` fuchsia
+
+version: '3'
+services:
+  fuchsia:
+    image: winksaville/fuchsia:ub-18.04
+    network_mode: bridge
+    privileged: false
+    volumes:
+     - /home:/home
+     - /etc/group:/etc/group:ro
+     - /etc/gshadow:/etc/gshadow:ro
+     - /etc/passwd:/etc/passwd:ro
+     - /etc/shadow:/etc/shadow:ro
+     - /etc/sudoers:/etc/sudoers:ro
+     - /etc/sudoers.d:/etc/sudoers.d:ro
